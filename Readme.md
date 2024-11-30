@@ -36,7 +36,7 @@ npx vite
 - [Overview](#overview)
 - [Animation](#animation)
   - [Custom Keyframe Animation](#custom-keyframe-animation)
-  - [Imported Animation](#imported-animation)
+  - [Loaded from a `.glb` File](#loaded-from-a-glb-file)
   - [Physics-based Animation](#physics-based-animation)
 - [Lights](#lights)
   - [Point Light](#point-light)
