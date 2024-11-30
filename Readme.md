@@ -150,7 +150,7 @@ More details on the cinematic process can be found in the [More on the cinematic
 
 # Animation
 
-Animations are handled in 3 different manners: custom keyframe animations, loaded from a ```.glb``` file, and physic-based animation.
+Animations are handled in 3 different manners: loaded from a ```.glb``` file, custom keyframe animations , and physic-based animation.
 
 ## Custom keyframe animation
 
@@ -214,11 +214,11 @@ Here's how the keyframe animation system works in Three.js:
 
 Three.js handles the interpolation between keyframes automatically. It uses linear interpolation to calculate intermediate values, creating smooth transitions.
 
-The line `this.actions['flicker'] = flickerAction;` stores the animation action in an object called `actions` using 'flicker' as the key. The `actions` object acts as a dictionary that maps animation names to their corresponding `AnimationAction` instances. This allows the animation to be referenced and controlled later using this key.
+The line `this.actions['flicker'] = flickerAction;` stores the animation action in an object called `actions` using 'flicker' as the key. The `actions` object acts as a dictionary that maps animation names to their corresponding `AnimationAction` instances. This allows the animation to be referenced and controlled later using this key (e.g. `this.actions['flicker'].play()`).
 
 ## Loaded from a `.glb` File
 
-The [Adventurer](src/worldObjects/Adventurer.js) and [Horse](src/worldObjects/Horse.js) are the only two [WorldObjects](src/worldObjects/WorldObject.js) that utilize animations loaded directly from their respective `.glb` files. Both rely on the following `setupAnimation` method:
+The [Adventurer](src/worldObjects/Adventurer.js) and [Horse](src/worldObjects/Horse.js) are the only two [WorldObjects](src/worldObjects/WorldObject.js) that utilize animations loaded directly from their respective `.glb` files (downloaded from [poly.pizza](https://poly.pizza/)). Both rely on the following `setupAnimation` method:
 
 ```javascript
 /*
@@ -282,21 +282,19 @@ Each particle in the system has properties like position, velocity, age, and col
 
 The particle system allows customization of many parameters including:
 - Particle count, size and lifetime
-- Start and end colors for color transitions
+- Start and end colors
 - Spawn radius and spread
 - Movement direction and speed
-- Blending modes for visual effects
+- Blending modes
 
 Example of physics-based animation used for the train's smoke:
 <div style="display: flex; justify-content: center; gap: 10px;">
     <img src="./assets/animations.train.smoke.png" alt="Train smoke example" width="300"/>
 </div>
+
 <br>
 
-
-The implementation can be found in the `ParticleSystem` class, with the train's smoke configuration in `Train.js`. The key methods to examine are `initializeParticleSystem()` for particle setup and `update()` for the physics simulation.
-
-
+The implementation can be found in the [`ParticleSystem`](src/effects/ParticleSystem.js) class, with the train's smoke configuration in [`Train.js`](src/worldObjects/Train.js).
 
 # Lights
 
