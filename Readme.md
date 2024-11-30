@@ -414,10 +414,6 @@ async loadModel()
 }
 ```
 
-(click on the image below to watch the video)
-[![Watch the video](https://img.youtube.com/vi/JxwnuAByAS8/maxresdefault.jpg)](https://youtu.be/JxwnuAByAS8)
-
-
 # Modelling
 
 The project uses a combination of pre-made models and custom-created assets. Most of the 3D models like the train, adventurer, horse and campfire were sourced from [poly.pizza](https://poly.pizza/), a free 3D model repository. These models and their respective animations are downloaded in .glb format and imported into the project using [Three.js's GLTFLoader](https://threejs.org/docs/?q=GLTFLoader#examples/en/loaders/GLTFLoader) class.
@@ -485,14 +481,11 @@ this.cinematicManager.registerActionAtTimeStep(20 + timeStepOffset, "worldEvent"
 
 this.cinematicManager.registerActionAtTimeStep(45 + timeStepOffset, "worldEvent", ["horse", "setCurrentAnimation", "Gallop_Jump", true]); // The true parameter disables the animation loop, the animation will only play once.
 ```
-<br>
-<div style="display: flex; justify-content: center; gap: 10px;">
-    <img src="./assets/cinematic.horse.gif" alt="Cinematic horse" width="300"/>
-</div>
-
-<br>
 
 At time step 20, the horse starts performing the "Gallop" animation. At time step 45, the horse performs the "Gallop_Jump" animation once, then returns to the "Gallop" animation (default behavior when the animation is only played once).
+
+(click on the image below to watch the video)
+[![Watch the video](https://img.youtube.com/vi/JxwnuAByAS8/maxresdefault.jpg)](https://youtu.be/JxwnuAByAS8)
 
 # Ressources
 - [Three.js docs](https://threejs.org/docs/index.html)
