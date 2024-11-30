@@ -2,8 +2,29 @@
 
 This project is a 3D animation movie built using Three.js.
 
+## Watch the animation movie
 (click on the image below to watch the video)
 [![Watch the video](https://img.youtube.com/vi/D-u03S-QeFA/maxresdefault.jpg)](https://youtu.be/D-u03S-QeFA)
+
+## Or, how to run the project locally
+
+1. Clone the repository
+```bash
+git clone https://github.com/tomhodemon/cg.git
+```
+2. Install the dependencies
+```bash
+npm install
+``` 
+3. Go on src/ folder
+```bash
+cd src/
+```
+4. Start the development server
+```bash
+npx vite
+```
+5. (Optional) Set `DEBUG` to `false` in [`global.js`](src/global.js)
 
 # Structure
 
@@ -83,7 +104,7 @@ The Adventurer object is an example of AnimatedWorldObject with a specific behav
 
 1. **At initialization time**
 
-In `main.js`, `WorldManager.initialize()` is called. This method initializes the `Adventurer` object by calling its `initialize()` method. During its initialization, the `Adventurer` object is added to `WorldManager.worldObjects` dictionary with the key `'adventurer'` to allow easy access to it later. 
+In `main.js`, `WorldManager.initialize()` is called. This method initializes the `Adventurer` object by calling its `initialize()` method. The 3D model is loaded and animations are set up. During its initialization, the `Adventurer` object is added to `WorldManager.worldObjects` dictionary with the key `'adventurer'` to allow easy access to it later. 
 
 Back in `main.js`, after the `WorldManager` has been initialized, `initCinematic()` is called. This method registers a set of actions `Adventurer` will perform at specific time steps. For example:
 ```javascript
@@ -424,7 +445,7 @@ A mountain model was downloaded from poly.pizza, and the tunnel was added using 
 
 The railroad tracks were built programmatically using Three.js's built-in geometry primitives. The tracks are made of wooden ties and metal rails, and are repeated along the track to create a continuous railroad. The textures for the wooden ties and metal rails are loaded using [Three.js's TextureLoader](https://threejs.org/docs/#api/en/loaders/TextureLoader) class and applied to the materials of the respective geometries. The complete implementation can be found in [Railroad.js](src/worldObjects/Railroad.js#L26). 
 
-Example of the railroad:
+Example of the railroad with textures applied:
 <div style="display: flex; justify-content: center; gap: 10px;">
     <img src="./assets/modelling.railroad.png" alt="Railroad example" width="400"/>
 </div>
