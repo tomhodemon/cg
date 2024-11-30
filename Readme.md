@@ -2,6 +2,7 @@
 
 This project is a 3D animation movie built using Three.js.
 
+(click on the image below to watch the video)
 [![Watch the video](https://img.youtube.com/vi/D-u03S-QeFA/maxresdefault.jpg)](https://youtu.be/D-u03S-QeFA)
 
 # Structure
