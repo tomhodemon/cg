@@ -1,0 +1,27 @@
+const DEBUG = true;
+
+const campOffsetX = 245;
+
+const TRAIN_SPEED = 15;
+const TRAIN_POSITION_X = -420;
+
+const ADVENTURER_INITIAL_SPEED = 0;
+const ADVENTURER_SPEED = 7;
+
+const HORSE_INITIAL_SPEED = 0;
+const HORSE_SPEED = 7;
+
+
+const TUNNEL_POSITION_X = 30;
+
+export { 
+    DEBUG,
+    campOffsetX, 
+    TRAIN_SPEED, 
+    TRAIN_POSITION_X, 
+    ADVENTURER_INITIAL_SPEED, 
+    HORSE_INITIAL_SPEED, 
+    TUNNEL_POSITION_X, 
+    ADVENTURER_SPEED, 
+    HORSE_SPEED 
+};
