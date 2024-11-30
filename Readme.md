@@ -23,10 +23,9 @@ This project is a 3D animation movie built using Three.js.
   - [Ambient Light](#ambient-light)
   - [Directional Light](#directional-light)
 - [Shaders](#shaders)
-- [More on the cinematic through programmatic process](#more-on-the-cinematic-through-programmatic-process)
 - [Modelling](#modelling)
+- [More on the cinematic through programmatic process](#more-on-the-cinematic-through-programmatic-process)
 - [Resources](#ressources)
-- [To Do](#to-do)
 
 # Tech Stack
 
@@ -43,7 +42,7 @@ The project is built using the following technologies.
 
 The project is structured around several key components that work together to create the final cinematic.
 
-The main application ([main.js](src/main.js)) serves as the core orchestrator, initializing and managing the overall scene, objects, renderer and game loop. At its heart is the Request Animation Frame (RAF) function which runs continuously to drive the animation forward. On each frame, it updates the components of the scene, the cinematic manager, and renders the scene while tracking timing between frames.
+The main application ([main.js](src/main.js)) serves as the core orchestrator, initializing and managing the overall scene, objects, renderer and game loop. At its heart is the Request Animation Frame (RAF) function which runs continuously to drive the animation forward. On each frame, it updates the objects of the scene, the cinematic manager, and renders the scene while tracking timing between frames.
 
 Object management is handled by the [`WorldManager`](src/WorldManager.js), which acts as a central hub for all objects in the 3D environment. It takes care of spawning and initializing objects like the train, horse, and adventurer, manages their positions and potential collisions, and ensures all world objects are properly updated each frame, respecting their specific behaviors. The `WorldManager` provides a clean interface for other components (like the `CinematicManager`) to trigger events on any object in the scene.
 
@@ -74,7 +73,7 @@ update(timeElapsed)
 }
 ```
 
-Orchestrating the scene's narrative flow is the [`CinematicManager.js`](src/Cinematic.js), which maintains a timeline of actions that should occur at specific moments (see the [Cinematic](#cinematic-through-programmatic-process) section). This manager coordinates camera changes, animation triggers, and other events, providing a registration system for timeline actions. It works in 2 steps: 
+Orchestrating the scene's narrative flow is the [`CinematicManager.js`](src/Cinematic.js), which maintains a timeline of actions that should occur at specific moments (see the [Cinematic](#more-on-the-cinematic-through-programmatic-process) section). This manager coordinates camera changes, animation triggers, and other events, providing a registration system for timeline actions. It works in 2 steps: 
 1. **At initialization time**: Register actions to be performed at specific moments in time
 2. **At runtime**: At each frame, check if there are any actions to execute. If so, execute them in sequence.
 
@@ -151,7 +150,7 @@ More details on the cinematic process can be found in the [More on the cinematic
 
 # Animation
 
-Animations are handled in 3 different manners: loaded from a ```.glb``` file, physic-based animation and custom keyframe animations. 
+Animations are handled in 3 different manners: custom keyframe animations, loaded from a ```.glb``` file, and physic-based animation.
 
 ## Custom keyframe animation
 
@@ -415,9 +414,26 @@ async loadModel()
 }
 ```
 
+(click on the image below to watch the video)
 [![Watch the video](https://img.youtube.com/vi/JxwnuAByAS8/maxresdefault.jpg)](https://youtu.be/JxwnuAByAS8)
 
 
+# Modelling
+
+The project uses a combination of pre-made models and custom-created assets. Most of the 3D models like the train, adventurer, horse and campfire were sourced from [poly.pizza](https://poly.pizza/), a free 3D model repository. These models and their respective animations are downloaded in .glb format and imported into the project using [Three.js's GLTFLoader](https://threejs.org/docs/?q=GLTFLoader#examples/en/loaders/GLTFLoader) class.
+
+A mountain model was downloaded from poly.pizza, and the tunnel was added using Blender to achieve the specific look needed for the scene.
+<div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="./assets/modelling.tunnel.png" alt="Tunnel example" width="400"/>
+</div>
+<br>
+
+The railroad tracks were built programmatically using Three.js's built-in geometry primitives. The tracks are made of wooden ties and metal rails, and are repeated along the track to create a continuous railroad. The textures for the wooden ties and metal rails are loaded using [Three.js's TextureLoader](https://threejs.org/docs/#api/en/loaders/TextureLoader) class and applied to the materials of the respective geometries. The complete implementation can be found in [Railroad.js](src/worldObjects/Railroad.js#L26). 
+
+Example of the railroad:
+<div style="display: flex; justify-content: center; gap: 10px;">
+    <img src="./assets/modelling.railroad.png" alt="Railroad example" width="400"/>
+</div>
 <br>
 
 # More on the cinematic through programmatic process
@@ -477,24 +493,6 @@ this.cinematicManager.registerActionAtTimeStep(45 + timeStepOffset, "worldEvent"
 <br>
 
 At time step 20, the horse starts performing the "Gallop" animation. At time step 45, the horse performs the "Gallop_Jump" animation once, then returns to the "Gallop" animation (default behavior when the animation is only played once).
-
-# Modelling
-
-The project uses a combination of pre-made models and custom-created assets. Most of the 3D models like the train, adventurer, horse and campfire were sourced from [poly.pizza](https://poly.pizza/), a free 3D model repository. These models and their respective animations are downloaded in .glb format and imported into the project using [Three.js's GLTFLoader](https://threejs.org/docs/?q=GLTFLoader#examples/en/loaders/GLTFLoader) class.
-
-A mountain model was downloaded from poly.pizza, and the tunnel was added using Blender to achieve the specific look needed for the scene.
-<div style="display: flex; justify-content: center; gap: 10px;">
-    <img src="./assets/modelling.tunnel.png" alt="Tunnel example" width="400"/>
-</div>
-<br>
-
-The railroad tracks were built programmatically using Three.js's built-in geometry primitives. The tracks are made of wooden ties and metal rails, and are repeated along the track to create a continuous railroad. The textures for the wooden ties and metal rails are loaded using [Three.js's TextureLoader](https://threejs.org/docs/#api/en/loaders/TextureLoader) class and applied to the materials of the respective geometries. The complete implementation can be found in [Railroad.js](src/worldObjects/Railroad.js#L26). 
-
-Example of the railroad:
-<div style="display: flex; justify-content: center; gap: 10px;">
-    <img src="./assets/modelling.railroad.png" alt="Railroad example" width="400"/>
-</div>
-<br>
 
 # Ressources
 - [Three.js docs](https://threejs.org/docs/index.html)
